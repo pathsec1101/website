@@ -1,0 +1,279 @@
+// Variáveis atualizadas com suas novas cores
+$bg-page: #ffffff; // Fundo da página
+$bg-shape: #0b354f; // Cor do card principal e botões
+$radius: 36px;
+$nav-height: 70px;
+
+.layout-wrapper {
+  background-color: $bg-page;
+  padding: 1.5rem;
+  min-height: 100vh;
+  position: relative;
+  font-family: sans-serif;
+}
+
+// --- BOTÃO CUSTOMIZADO ---
+.btn-custom-blue {
+  background-color: $bg-shape;
+  color: #ffffff;
+  border: 1px solid $bg-shape;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: lighten($bg-shape, 10%);
+    color: #ffffff;
+  }
+}
+
+// --- CABEÇALHO E LOGO ---
+.floating-header {
+  position: absolute;
+  top: 2.7rem;
+  left: 2rem;
+  right: 2rem;
+  z-index: 50;
+
+  // O header em si não bloqueia o clique no resto da página
+  pointer-events: none;
+
+  // Mas TUDO que estiver dentro dele (logo, botões) volta a ser clicável
+  * {
+    pointer-events: auto;
+  }
+
+  .logo-container {
+    .logo-img {
+      width: 150px; // Força a largura
+      max-width: 100%; // Garante responsividade
+      height: auto; // Mantém a proporção do SVG
+      display: block; // Evita que o SVG colapse
+    }
+  }
+}
+
+// --- FORMA PRINCIPAL ---
+.main-shape-card {
+  background-color: $bg-shape;
+  border-radius: $radius;
+  height: 90vh; // Ocupa a tela descontando o padding
+  margin-top: 80px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-area {
+
+  .row{
+    height: 100%;
+    display: flex;
+  }
+
+  
+
+  .TypingText {
+    font-size: 2em;
+    text-align: left !important;
+    padding-top: 25vh;
+    
+  }
+
+  .hero {
+    display: flex;
+    align-items: flex-start;
+    position: absolute;
+    right: 0;
+    width: 45%;
+    transform: scaleX(-1);
+   
+
+
+
+
+  }
+
+  .hero-image {
+    flex: 1;
+  }
+
+  .hero-content {
+    flex: 1;
+    padding-left: 3rem;
+  }
+
+  .hero-content h2 {
+    font-size: 1.2rem;
+    color: #777;
+    margin: 0;
+  }
+
+  .hero-content h1 {
+    font-size: 2.5rem;
+    color: #222;
+    margin: 0.2rem 0 1rem;
+  }
+
+  .hero-content p {
+    color: #555;
+    line-height: 1.6;
+  }
+}
+
+// --- ABA DO MENU (TOPO) ---
+.nav-bump {
+  position: absolute;
+  top: -$nav-height;
+  left: 200px; // Ajuste horizontal do menu
+  height: $nav-height;
+  background-color: $bg-shape;
+  padding: 0 40px;
+  border-top-left-radius: $radius;
+  border-top-right-radius: $radius;
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+
+  // Definição clara dos links do menu com Hover
+  a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    position: relative;
+    transition: opacity 0.3s ease;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background-color: #ffffff;
+      transition: width 0.3s ease;
+    }
+
+    &:hover {
+      opacity: 0.9;
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+
+  // Curvas invertidas (Desktop)
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -$radius;
+    width: $radius;
+    height: $radius;
+    background: radial-gradient(circle at 0 0, transparent 0, transparent calc(#{$radius} - 0.5px), $bg-shape calc(#{$radius} - 0.2px), $bg-shape 100%);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: -$radius;
+    width: $radius;
+    height: $radius;
+    background: radial-gradient(circle at 100% 0, transparent 0, transparent calc(#{$radius} - 0.5px), $bg-shape calc(#{$radius} - 0.2px), $bg-shape 100%);
+  }
+}
+
+// --- RECORTE INFERIOR (CRAZY MODE) ---
+.crazy-mode-cutout {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: $bg-page; // O fundo do recorte agora é a cor da página (branco)
+  padding: 20px 40px;
+  border-top-left-radius: $radius;
+  
+  display: flex;
+  align-items: center;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -$radius;
+    right: 0;
+    width: $radius;
+    height: $radius;
+    background: radial-gradient(circle at 0 0, transparent 0, transparent calc(#{$radius} - 0.5px), $bg-page calc(#{$radius} - 0.2px), $bg-page 100%);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -$radius;
+    width: $radius;
+    height: $radius;
+    background: radial-gradient(circle at 0 0, transparent 0, transparent calc(#{$radius} - 0.5px), $bg-page calc(#{$radius} - 0.2px), $bg-page 100%);
+  }
+}
+
+// ==========================================
+// RESPONSIVIDADE (Tablets e Celulares)
+// ==========================================
+@media (max-width: 991px) {
+
+  .layout-wrapper {
+    padding: 1rem;
+  }
+
+  .floating-header {
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin-bottom: 1rem;
+    justify-content: center !important;
+  }
+
+  .main-shape-card {
+    margin-top: 0;
+    height: auto;
+    min-height: 80vh;
+  }
+
+  // Em telas menores, removemos o efeito de "aba isolada" e transformamos num header interno
+  .nav-bump {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    padding: 1.5rem;
+    border-radius: $radius $radius 0 0;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+
+    // Desliga as curvas invertidas no mobile
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
+
+  // O Crazy mode vira um bloco normal no final do card
+  .crazy-mode-cutout {
+    position: relative;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    justify-content: center;
+    border-radius: 0 0 $radius $radius; // Arredonda os cantos de baixo para fechar o card
+
+    // Desliga as curvas invertidas no mobile
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
+}
