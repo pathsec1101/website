@@ -1,0 +1,188 @@
+$bg-color: #111111;
+$card-bg: #161616;
+$border-color: rgba(255, 255, 255, 0.1);
+$text-muted: #888888;
+$transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+
+.features-section {
+  background-color: $bg-color;
+  padding: 120px 0;
+  color: #ffffff;
+
+  .features-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 80px;
+
+    &__title {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin: 0;
+    }
+
+    &__right { max-width: 400px; }
+    &__text { color: $text-muted; margin-bottom: 24px; font-size: 1.1rem; }
+    &__btn {
+      background: none;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      padding: 10px 24px;
+      border-radius: 50px;
+      cursor: pointer;
+      &:hover { background: #fff; color: #000; }
+    }
+  }
+
+  .feature-card {
+    position: relative;
+    background: $card-bg;
+    border: 1px solid $border-color;
+    border-radius: 40px;
+    border-top-left-radius: 0; // Necessário para o notch
+    padding: 40px;
+    height: 520px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px; // Espaço para o notch não cortar
+    transition: $transition;
+
+    // O RECORTE (NOTCH)
+    &__notch {
+      position: absolute;
+      top: -41px; // Alinha com a borda do card
+      left: -1px; // Alinha com a borda esquerda
+      height: 42px;
+      width: 100px;
+      background: $card-bg;
+      border: 1px solid $border-color;
+      border-bottom: none;
+      border-radius: 24px 24px 0 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      // A CURVA NEGATIVA (Direita do Notch)
+      &::after {
+        content: "";
+        position: absolute;
+        right: -25px;
+        bottom: 0;
+        width: 25px;
+        height: 25px;
+        background: transparent;
+        border-bottom-left-radius: 25px;
+        // O box-shadow cria o preenchimento da curva na cor do card
+        box-shadow: -10px 10px 0 10px $card-bg; 
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      // A LINHA DA BORDA DA CURVA NEGATIVA
+      &::before {
+        content: "";
+        position: absolute;
+        right: -25px;
+        bottom: -1px;
+        width: 25px;
+        height: 25px;
+        border-bottom-left-radius: 25px;
+        border-left: 1px solid $border-color;
+        border-bottom: 1px solid transparent; // Esconde a linha de base
+        pointer-events: none;
+      }
+    }
+
+    &__number {
+      color: $text-muted;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    &__content {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__visual {
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: $transition;
+    }
+
+    &__icon-wrapper {
+      width: 160px;
+      height: 160px;
+    // Se não tiver o mixin, use flex normal
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      // Efeito de luz sutil atrás do ícone como na foto
+      background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
+    }
+
+    &__title {
+      font-size: 1.8rem;
+      font-weight: 500;
+      text-align: center;
+      line-height: 1.2;
+      margin-bottom: 0;
+      transition: $transition;
+    }
+
+    &__expandable {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: $transition;
+      text-align: center;
+    }
+
+    &__description {
+      color: $text-muted;
+      font-size: 0.95rem;
+      margin-top: 20px;
+      line-height: 1.5;
+    }
+
+    &__link {
+      background: none;
+      border: none;
+      color: #fff;
+      margin-top: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    // INTERAÇÃO DE HOVER
+    &:hover {
+      border-color: rgba(255, 255, 255, 0.3);
+      
+      .feature-card__notch {
+        border-color: rgba(255, 255, 255, 0.3);
+        &::before { border-left-color: rgba(255, 255, 255, 0.3); }
+      }
+
+      .feature-card__visual {
+        transform: translateY(-20px) scale(0.9);
+      }
+
+      .feature-card__expandable {
+        max-height: 150px;
+        opacity: 1;
+        margin-top: 10px;
+      }
+
+      .feature-card__title {
+        transform: translateY(-10px);
+      }
+    }
+  }
+}

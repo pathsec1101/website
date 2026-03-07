@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=SN+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+@import "~bootstrap/scss/bootstrap";
 
 body{
 
       background-color: black;
-      overflow-x: hidden;
-      overflow-y: hidden;
+     overflow-x: hidden; 
+   overflow-y: hidden;
 }
 main{
    background-color: black;
@@ -26,4 +27,8 @@ main{
             text-transform: uppercase;
         }
     }
+}
+.FeaturesPath{
+
+
 }

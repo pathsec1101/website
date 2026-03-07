@@ -1,0 +1,70 @@
+// PartnerSlider.scss
+
+.partners-section {
+  background-color: white;
+  height: 60vh;
+  color: #0b354f;
+  padding: 4rem 0;
+  overflow: hidden;
+
+  h2{
+    font-size: 5em;
+    border-bottom: solid 1px #0b354f;
+  }
+  p{
+    text-align: left;
+    padding-top: 3vh;
+    width:40%;
+    margin-left: 250px;
+  };
+  a{
+    background-color: #0b354f;
+    color: white;
+    border-radius: 50px;
+  }
+}
+
+.slider-container {
+  width: 100%;
+  overflow: hidden; // Esconde o que sai da tela
+  position: relative;
+  padding: 1rem 0;
+  cursor: grab; // Indica que o usuário pode interagir
+  
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.slider-track {
+  display: flex;
+
+  gap: 24px; // Espaço entre os cards
+  width: max-content; // Garante que o contêiner expanda conforme o conteúdo
+  padding-left: 24px;
+}
+
+.partner-card {
+  flex: 0 0 auto;
+  width: 300px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #0b354f;
+  border-radius: 12px;
+  
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  
+  // Estilo das logos/texto
+ 
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #0b354f;
+
+  &:hover {
+    background-color: #0b354f;
+    transform: translateY(-5px); // Dá um pequeno salto ao passar o mouse
+    color: white;
+  }
+}

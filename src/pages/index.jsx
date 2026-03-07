@@ -2,6 +2,8 @@ import React from "react"
 import PathBackground from "../components/PathBackground"
 import LogoPath from "../assets/logo-white.svg";
 import HomeContainer from "../components/Home"
+import CardsFeatures from "../components/CardsFeatures/CardsFeatures"
+import Solutions from "../components/Solutions"
 import "./index.scss"
 
 export default function Home() {
@@ -19,9 +21,20 @@ export default function Home() {
         </div>
 
       </div>
-      { /*      <HomeContainer /> */}
+      {/*    <HomeContainer />
+      <div className="container-fluid FeaturesPath">
 
 
+        <div className="row RowItensCards">
+          <CardsFeatures />
+
+        </div>
+
+
+
+      </div>
+      <Solutions />*/}
+   
 
     </main>
   )
