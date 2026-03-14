@@ -24,12 +24,14 @@
   }
 }
 
+/* Apenas as classes do slider, o restante do seu CSS continua igual */
+
 .slider-container {
   width: 100%;
-  overflow: hidden; // Esconde o que sai da tela
+  overflow: hidden;
   position: relative;
   padding: 1rem 0;
-  cursor: grab; // Indica que o usuário pode interagir
+  cursor: grab;
   
   &:active {
     cursor: grabbing;
@@ -38,10 +40,15 @@
 
 .slider-track {
   display: flex;
-
-  gap: 24px; // Espaço entre os cards
-  width: max-content; // Garante que o contêiner expanda conforme o conteúdo
-  padding-left: 24px;
+  gap: 24px; 
+  width: max-content; 
+  
+  /* REMOVIDO: padding-left: 24px; */
+  /* ADICIONADO: padding-right igual ao gap para a matemática do loop fechar 100% */
+  padding-right: 24px; 
+  
+  /* ADICIONADO: Força o navegador a usar aceleração de hardware, melhorando a fluidez */
+  will-change: transform; 
 }
 
 .partner-card {
@@ -56,15 +63,13 @@
   
   transition: background-color 0.3s ease, transform 0.3s ease;
   
-  // Estilo das logos/texto
- 
   font-weight: 600;
   font-size: 1.2rem;
   color: #0b354f;
 
   &:hover {
     background-color: #0b354f;
-    transform: translateY(-5px); // Dá um pequeno salto ao passar o mouse
+    transform: translateY(-5px); 
     color: white;
   }
 }

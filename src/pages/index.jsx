@@ -4,6 +4,8 @@ import LogoPath from "../assets/logo-white.svg";
 import HomeContainer from "../components/Home"
 import CardsFeatures from "../components/CardsFeatures/CardsFeatures"
 import Solutions from "../components/Solutions"
+import FormContainer from "../components/FormContainer"
+import Footer from "../components/Footer";
 import "./index.scss"
 
 export default function Home() {
@@ -20,8 +22,9 @@ export default function Home() {
           <p>Em Breve!</p>
         </div>
 
-      </div>
-      {/*    <HomeContainer />
+      </div> 
+
+      {/*   <HomeContainer />
       <div className="container-fluid FeaturesPath">
 
 
@@ -33,8 +36,11 @@ export default function Home() {
 
 
       </div>
-      <Solutions />*/}
-   
+      <Solutions />
+      <FormContainer />
+      <Footer />
+*/}
+    
 
     </main>
   )

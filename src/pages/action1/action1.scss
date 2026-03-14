@@ -1,0 +1,258 @@
+// buttoHome
+
+// Variáveis
+$ai-bg-dark: #0a0b10; // Fundo escuro profundo
+$ai-border: rgba(255, 255, 255, 0.1);
+$ai-gradient: linear-gradient(90deg, #3b82f6 0%, #2563eb 100%);
+$ai-radius: 12px;
+
+.ai-input-wrapper {
+
+
+    display: flex;
+    justify-content: left;
+}
+
+.ai-input-container {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid $ai-border;
+    border-radius: $ai-radius;
+    padding: 6px; // Espaçamento interno entre a borda e o botão
+    width: 100%;
+    max-width: 500px;
+    transition: border-color 0.3s ease;
+
+    &:focus-within {
+        border-color: rgba(59, 130, 246, 0.5);
+    }
+
+    .input-side {
+        display: flex;
+        align-items: center;
+        flex-grow: 1;
+        padding: 0 12px;
+
+        .ai-icon-badge {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 12px;
+            margin-right: 12px;
+            flex-shrink: 0;
+
+            small {
+                font-size: 10px;
+                color: #0b354f;
+                margin-left: 1px;
+            }
+        }
+
+        .ai-input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: white;
+            font-size: 15px;
+            width: 100%;
+
+            &::placeholder {
+                color: rgba(255, 255, 255, 0.4);
+            }
+        }
+    }
+
+    .ai-btn-test {
+        background: #fff;
+        border: none;
+        border-radius: 8px;
+        padding: 10px 18px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #0b354f;
+        font-weight: 500;
+        cursor: pointer;
+        transition: transform 0.2s ease, filter 0.2s ease;
+        white-space: nowrap;
+
+        &:hover {
+            filter: brightness(1.1);
+            transform: translateY(-1px);
+        }
+
+        &:active {
+            transform: translateY(0);
+        }
+
+        .icon-circle {
+            background: white;
+            color: #0b354f;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+        }
+    }
+}
+
+// Responsividade
+@media (max-width: 480px) {
+    .ai-input-container {
+        flex-direction: column; // Empilha em telas muito pequenas
+        padding: 10px;
+        gap: 12px;
+
+        .input-side {
+            width: 100%;
+            padding: 8px 0;
+        }
+
+        .ai-btn-test {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+}
+
+$bg-primary-color: #0b354f; // A cor sólida do seu site (mesma do gradiente)
+
+.HomeAction1 {
+    position: relative;
+    background-color: $bg-primary-color;
+    overflow: hidden;
+
+    height: 90vh;
+    display: flex;
+    align-items: center;
+
+    .video-bg-wrapper {
+        position: absolute;
+        top: 0;
+        right: 0; // Alinha o container do vídeo à direita
+        width: 60%; // Ocupa um pouco mais que a metade para garantir a cobertura
+        height: 100%;
+        z-index: 1;
+
+        .bg-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; // Garante que o vídeo preencha o espaço sem deformar
+        }
+
+        .video-overlay-gradient {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            // Gradiente da esquerda (cor sólida) para a direita (transparente)
+            background: linear-gradient(to right,
+                    $bg-primary-color 0%,
+                    $bg-primary-color 5%, // Começa a ficar transparente após 10% do vídeo
+                    transparent 90%);
+        }
+    }
+
+    .container {
+        position: relative;
+        z-index: 2; // Garante que o texto fique ACIMA do vídeo
+
+        img {
+            max-width: 180px;
+            margin-bottom: 50px;
+
+        }
+    }
+
+    .content-side {
+        color: white;
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 30px;
+        }
+    }
+}
+
+// Responsividade para Mobile
+@media (max-width: 768px) {
+    .HomeAction1 {
+        .video-bg-wrapper {
+            width: 100%;
+            opacity: 0.4; // No mobile, deixamos o vídeo mais suave por trás do texto
+
+            .video-overlay-gradient {
+                // No mobile, o gradiente pode ser de cima para baixo
+                background: linear-gradient(to bottom,
+                        $bg-primary-color 0%,
+                        transparent 50%,
+                        $bg-primary-color 100%);
+            }
+        }
+
+        .content-side {
+            text-align: center;
+            padding-top: 50px;
+        }
+    }
+}
+
+.Rating {
+    z-index: 10;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    background-color: white;
+    position: relative;
+    top: -5vh;
+    min-height: 50vh;
+    padding: 50px;
+
+    h5 {
+        font-size: 1.5em;
+    }
+
+    .row {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+    }
+}
+
+.TextScroll {
+    height: 250vh;
+    .row{
+        display: flex;
+        flex-wrap: nowrap;
+
+        img{
+            position: sticky;
+            top: 43vh;
+            max-width: 300px;
+        }
+    }
+ 
+}
+
+.Action1Cards {
+   
+    height: 100vh;
+   background-color: #2563eb;
+}

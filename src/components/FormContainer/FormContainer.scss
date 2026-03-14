@@ -1,0 +1,94 @@
+// Variáveis de Estilo
+$primary-dark: #0b354f;
+$border-radius: 12px;
+$button-radius: 50px;
+$transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+.contact-section {
+  background-color: #fff; // Fundo leve para destacar o formulário branco
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+
+  .container{
+    background-color: #0b354f;
+    border-radius: 20px;
+  }
+
+  .form-header {
+   
+    h2 {
+      color: #fff;
+      font-size: 2.8rem;
+      padding-top: 5vh;
+    }
+  
+  }
+
+  .contact-form {
+    background: white;
+    border-radius: $border-radius;
+    padding: 3rem;
+    border: 1px solid rgba($primary-dark, 0.05);
+  
+    margin-bottom: 5vh;
+
+    // Ajuste nos Floating Labels do Bootstrap
+    .form-control {
+      border: 1px solid rgba($primary-dark, 0.2);
+      border-radius: 8px;
+      transition: $transition-smooth;
+
+      &:focus {
+        border-color: $primary-dark;
+        box-shadow: 0 0 0 0.25rem rgba($primary-dark, 0.1);
+      }
+    }
+
+    label {
+      color: rgba($primary-dark, 0.6);
+    }
+  }
+
+  .btn-submit {
+    background-color: $primary-dark;
+    color: white;
+    border-radius: $button-radius;
+    padding: 0.8rem 2rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: $transition-smooth;
+    border: 2px solid $primary-dark;
+
+    &:hover {
+      background-color: transparent;
+      color: $primary-dark;
+      transform: translateY(-2px);
+ 
+      border: solid 1px #0b354f ;
+    }
+
+    &:disabled {
+      background-color: lighten($primary-dark, 20%);
+      border-color: lighten($primary-dark, 20%);
+    }
+  }
+
+  .success-card {
+    padding: 3rem;
+    border-radius: $border-radius;
+    border: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    
+    h4 {
+      color: #0f5132;
+      font-weight: 700;
+    }
+  }
+}
+
+// Classes de Animação (GSAP controla o estado inicial)
+.gsap-reveal, .title-reveal {
+  opacity: 0;
+  will-change: transform, opacity;
+}

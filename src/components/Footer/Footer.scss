@@ -1,0 +1,142 @@
+$primary-dark: #0b354f;
+$footer-bg: #fff;
+
+.main-footer {
+    position: relative; // Pai de referência para os efeitos absolutos
+    background-color: #fff; // Cor de fundo da seção
+    padding: 100px 0;
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden; // Garante que o SVG gigante não crie scroll lateral
+
+    .footer-card {
+        position: relative;
+        z-index: 2; // Fica ACIMA do texto gigante
+        background: white;
+        border: solid 1px rgba(0, 0, 0, 0.1);
+        border-radius: 40px;
+        padding: 60px;
+       
+    }
+
+    // Container para os elementos visuais de fundo
+    .background-effect-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none; // Não atrapalha cliques no formulário
+        z-index: 1; // Fica ABAIXO do card
+    }
+
+    .giant-background-text {
+        position: absolute;
+        bottom: -30%; // Ajuste para ficar "saindo" da tela como na imagem
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 25vw; // Tamanho responsivo baseado na largura da tela
+        font-weight: 700;
+        color: rgba(0, 0, 0, 0.03); // Bem clarinho, quase invisível
+        white-space: nowrap;
+        user-select: none;
+    }
+
+    .grid-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('../../assets/logo-pathsec.svg');
+        background-repeat: repeat;
+        background-size: 40px;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        z-index: 3; // Opcional: mude para 3 se quiser a grade POR CIMA do card
+    }
+}
+
+// Quando o modo crazy estiver ativo
+.main-footer.crazy-mode-active {
+    .grid-overlay {
+        opacity: 0.80; // Ajuste a intensidade do padrão
+    }
+
+    .giant-background-text {
+        position: absolute;
+        bottom: -30%; // Ajuste conforme a necessidade de "subida" do nome
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 22vw;
+        font-weight: 700;
+        color: rgba(0, 0, 0, 0.05); // Cor base bem sutil
+        white-space: nowrap;
+        user-select: none;
+        line-height: 1;
+        margin: 0;
+
+        /* Efeito de Transparência de baixo para cima */
+        /* Isso faz com que o topo seja sólido e a base fique transparente */
+        -webkit-mask-image: linear-gradient(to top, transparent 10%, black 90%);
+        mask-image: linear-gradient(to top, transparent 10%, black 90%);
+
+        // Opcional: Se quiser que o fundo mude no modo crazy, 
+        // podemos animar a opacidade da máscara também
+        transition: color 0.5s ease;
+    }
+
+    // No modo Crazy, podemos deixar o texto levemente mais visível
+    .main-footer.crazy-mode-active {
+        .giant-background-text {
+            color: rgba(#0b354f, 0.12);
+            -webkit-mask-image: linear-gradient(to top, transparent 0%, black 100%);
+            mask-image: linear-gradient(to top, transparent 0%, black 100%);
+        }
+    }
+}
+
+// Estilos internos do card (conforme imagem)
+.brand-column {
+    .logo-text {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #0b354f;
+
+    }
+
+    .description {
+        color: #666;
+        font-size: 0.9rem;
+    }
+
+    .social-icons {
+        display: flex;
+        gap: 20px;
+
+        .social-link {
+            color: #0b354f;
+            font-size: 1.2rem; // Tamanho dos ícones
+            transition: 1ms;
+
+            &:hover {
+                color: rgba(#0b354f, 0.7); // Efeito suave no hover
+                transform: translateY(-2px); // Pequeno pulo para cima
+            }
+        }
+    }
+}
+
+.column-title {
+    font-weight: bold;
+    color: #0b354f;
+}
+
+.footer-link,
+.legal-link,
+.copyright {
+    color: #888;
+    text-decoration: none;
+    font-size: 0.85rem;
+}
